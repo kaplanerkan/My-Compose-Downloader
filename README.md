@@ -23,13 +23,13 @@ try-catch blokları, ağ hataları veya dosya yazma hataları gibi olası sorunl
 * Dosyaları "images" adlı bir alt dizine kaydeder.
 * Base64 ile decode edilen veri önce bir ByteArray'e, sonra bir Bitmap'e dönüştürülür. Ardından, map.compress metodu ile PNG formatında dosyaya kaydedilir.
 
-# İlerleme Göstergesi: 
+## İlerleme Göstergesi: 
 LinearProgressIndicator, indirme ilerlemesini görsel olarak gösterir.
 
-# İptal Etme (İsteğe Bağlı): 
+## İptal Etme (İsteğe Bağlı): 
 cancelDownload fonksiyonu, devam eden bir indirmeyi iptal etmek için bir örnek sunar. Bunu UI'nize bir "İptal" butonu ekleyerek kullanabilirsiniz.
 
-# Base64 Decoding: 	
+## Base64 Decoding: 	
 Base64.decode(base64Content, Base64.DEFAULT) satırı, sunucudan gelen Base64 kodlu metni byte dizisine çevirir.
 
 # Sunucu Tarafı (Önemli): 
