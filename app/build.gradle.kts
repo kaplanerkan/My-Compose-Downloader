@@ -89,5 +89,6 @@ dependencies {
 
     implementation(libs.lifecycle.viewmodel.compose)
 
+    implementation ("io.coil-kt:coil-compose:2.6.0")
 
 }
