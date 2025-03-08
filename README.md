@@ -1,6 +1,9 @@
 # My-Compose-Downloader
 Liste icinde verilen dosyalari sunucudan download eder
 
+!screenshot.png
+
+
 
 # Açıklamalar ve Önemli Noktalar:
 
