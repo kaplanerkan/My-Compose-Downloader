@@ -40,6 +40,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     packaging {
         resources {
@@ -53,6 +54,9 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
