@@ -2,18 +2,20 @@ package com.mycomposedownloader.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.Retrofit.*
+import retrofit2.Retrofit.Builder
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "http://192.168.1.187:4200/"           // SUNUCUNUZUN BASE URL'i ile DEĞİŞTİRİN
+
+    private const val BASE_URL =
+        "http://192.168.1.187:4200/"           // SUNUCUNUZUN BASE URL'i ile DEĞİŞTİRİN
 
     private val loggingInterceptor = HttpLoggingInterceptor()
 
     init {
-
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY // You can change the level to HEADERS or BASIC if needed
+        // You can change the level to HEADERS or BASIC if needed
+        loggingInterceptor.level =
+            HttpLoggingInterceptor.Level.BODY
         loggingInterceptor.level = HttpLoggingInterceptor.Level.HEADERS
     }
 

@@ -24,7 +24,7 @@ open class FileDownloadViewModel(application: Application) : AndroidViewModel(ap
 
     // İndirme durumlarını tutan liste.  Compose UI'da gözlemlenebilir.
     open val downloadStatuses = mutableStateListOf<DownloadStatus>()
-    private val context: Context = application.applicationContext
+    private val context: Context by lazy { application.applicationContext }
 
 
     // Dosya listesi (örnek olarak, sunucudan alınabilir)
@@ -65,8 +65,12 @@ open class FileDownloadViewModel(application: Application) : AndroidViewModel(ap
 
                 val response = RetrofitClient.instance.downloadResimDosyasi(dosyaRequestModel)
 
-                if (response is String && response.isNotBlank()) {
+                if (response is String && response.isBlank()) {
+                    updateDownloadStatus(filename, 0, 0, error = "Boş dosya")
+
+                } else if (response is String && response.isNotBlank()) {
                     val totalBytes = response.toByteArray()
+
                     updateDownloadStatus(
                         filename,
                         totalBytes.size.toLong(),
@@ -87,29 +91,6 @@ open class FileDownloadViewModel(application: Application) : AndroidViewModel(ap
                     return@launch
                 }
 
-                /* if (response.contentLength() == 0L) {
-                     updateDownloadStatus(filename, 0, 0, error = "Boş dosya")
-                     return@launch
-                 }
-
-                 if (response.contentType().toString() != "application/json") {
-                     updateDownloadStatus(filename, 0, 0, error = "Dosya text/plain tipinde değil.")
-                     return@launch
-                 }
-
-                 val totalBytes = response.contentLength()
-                 updateDownloadStatus(filename, totalBytes, 0) // Toplam boyutu güncelle
-
-                 // Base64 veriyi al ve decode et
-                 val base64Content = response.string() //ResponseBody'i string'e çeviriyoruz.
-                 val decodedBytes = Base64.decode(base64Content, Base64.DEFAULT)
-
-
-                 saveFile(
-                     filename,
-                     decodedBytes,
-                     totalBytes
-                 ) *///Byte array ve toplam boyutu parametre olarak yolluyoruz.
 
             } catch (e: Exception) {
                 updateDownloadStatus(
@@ -133,8 +114,14 @@ open class FileDownloadViewModel(application: Application) : AndroidViewModel(ap
                 if (!dir.exists()) {
                     dir.mkdirs()
                 }
+
                 val pureFileName = filename.substringBefore(".") // .txt oncesi dosya ismi.
                 val file = File(dir, "$pureFileName.png")
+                // Dosya önceden mevcut ise sil
+                if (file.exists()) {
+                    file.delete()
+                }
+
                 FileOutputStream(file).use { out ->
                     //Byte array'i direk dosyaya yaz.
                     bitmap.compress(

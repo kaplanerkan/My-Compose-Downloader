@@ -15,10 +15,11 @@ interface FileDownloadService {
 
     @POST("api/Synchronize/SynchronizeDatasUrunResimleri")
 
-    suspend fun downloadResimDosyasi(@Body dosyaRequest: DosyaRequestModel,
-                                     @Header("Content-Type") contentType: String = "application/json",     // ResponseBody, ham veriyi almak için)
-                                     @Header("Content-Type") accept: String = "*/*"): Any       // ResponseBody, ham veriyi almak için)
-
+    suspend fun downloadResimDosyasi(
+        @Body dosyaRequest: DosyaRequestModel,
+        @Header("Content-Type") contentType: String = "application/json",     // ResponseBody, ham veriyi almak için)
+        @Header("Content-Type") accept: String = "*/*"
+    ): Any       // ResponseBody, ham veriyi almak için)
 
 
 }
