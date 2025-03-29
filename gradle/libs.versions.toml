@@ -1,5 +1,5 @@
 [versions]
-agp = "8.8.2"
+agp = "8.9.1"
 kotlin = "2.1.10"
 core-ktx = "1.15.0"
 junit = "4.13.2"
@@ -12,13 +12,13 @@ material = "1.12.0"
 lifecycle-runtime-ktx = "2.8.7"
 ksp = "2.1.10-1.0.29"
 activity-compose = "1.10.1"
-compose-bom = "2025.02.00"
+compose-bom = "2025.03.01"
 glideCompose = "1.0.0-beta01"
 retrofit = "2.11.0"
 runtimeLivedata = "1.7.8"
 constraintlayout = "2.2.1"
-navigationFragmentKtx = "2.6.0"
-navigationUiKtx = "2.6.0"
+navigationFragmentKtx = "2.8.9"
+navigationUiKtx = "2.8.9"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
